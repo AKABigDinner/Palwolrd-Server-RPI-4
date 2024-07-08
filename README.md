@@ -9,5 +9,5 @@ From a fresh install of Debian 12 Bookworm boot RPI 4.
 In the CLI type the following.
 
     sudo apt install git
-
-    git clone 
+###
+    git clone https://github.com/AKABigDinner/Palwolrd-Server-RPI-4.git
