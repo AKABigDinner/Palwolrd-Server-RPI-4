@@ -1,5 +1,6 @@
 #!/bin/bash
 set -x
+cd ~
 sudo apt update
 sudo apt install curl -y
 sudo apt update
