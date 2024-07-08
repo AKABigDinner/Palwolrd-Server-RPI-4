@@ -8,4 +8,4 @@ From a fresh install of Debian 12 Bookworm boot RPI 4.
 
 In the CLI type the following.
 
-Sudo apt install git
+sudo apt install git
