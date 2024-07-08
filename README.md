@@ -11,3 +11,10 @@ In the CLI type the following.
     sudo apt install git
 ###
     git clone https://github.com/AKABigDinner/Palwolrd-Server-RPI-4.git
+Enter user and token:
+
+Now that the install file is downloaded type the following.
+
+    cd Palwolrd-Server-RPI-4
+    sudo chmod +x PalWorld-Install.sh
+    ./PalWorld-Install.sh
