@@ -33,10 +33,17 @@ sudo -u palworld bash << EOF
 mkdir ~/steamcmd
 cd ~/steamcmd
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+./steamcmd.sh & pid=$!
+sleep 30
+kill -TSTP $pid
 ./steamcmd.sh +force_install_dir ~/steamworkssdk +@sSteamCmdForcePlatformType linux +login anonymous +app_update 1007 validate +quit
 mkdir -p ~/.steam/sdk64
 cp ~/steamworkssdk/linux64/steamclient.so ~/.steam/sdk64/
 ./steamcmd.sh +force_install_dir ~/palworldserver +@sSteamCmdForcePlatformType linux +login anonymous +app_update 2394010 validate +quit
+cd ~/palworldserver/
+./PalServer.sh & pid=$!
+sleep 30
+kill -TSTP $pid
 cp ~/palworldserver/DefaultPalWorldSettings.ini ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 exit
 EOF
@@ -61,4 +68,5 @@ sudo cd
 sudo systemctl daemon-reload
 sudo systemctl enable palworld
 sudo systemctl start palworld
+sleep 30
 sudo reboot now -h
