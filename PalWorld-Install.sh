@@ -43,7 +43,7 @@ cd ~/palworldserver/
 sleep 5m
 kill -TSTP $pid
 cp ~/palworldserver/DefaultPalWorldSettings.ini ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-#exit might not need this
+exit
 EOF
 
 echo "[Unit]
