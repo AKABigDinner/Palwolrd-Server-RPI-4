@@ -6,7 +6,7 @@ sudo apt install curl -y
 sudo apt update
 sudo apt upgrade -y
 sudo apt install git build-essential cmake -y
-git clone https://github.com/ptitSeb/box86
+sudo git clone https://github.com/ptitSeb/box86
 sudo dpkg --add-architecture armhf
 sudo apt update
 sudo apt install gcc-arm-linux-gnueabihf libc6:armhf -y
@@ -14,17 +14,15 @@ cd ~/box86
 mkdir build
 cd build
 cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
-echo "##########box86 installing#############"
 make -j$(nproc)
 sudo make install
 sudo systemctl restart systemd-binfmt
 cd ~
-git clone https://github.com/ptitSeb/box64.git
+sudo git clone https://github.com/ptitSeb/box64.git
 cd ~/box64
 mkdir build
 cd build
-cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
-echo "##########box64 installing#############"				   
+cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo			   
 make -j$(nproc)
 sudo make install
 sudo systemctl restart systemd-binfmt
@@ -34,7 +32,7 @@ mkdir ~/steamcmd
 cd ~/steamcmd
 curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
 ./steamcmd.sh & pid=$!
-sleep 1m
+sleep 5m
 kill -TSTP $pid
 ./steamcmd.sh +force_install_dir ~/steamworkssdk +@sSteamCmdForcePlatformType linux +login anonymous +app_update 1007 validate +quit
 mkdir -p ~/.steam/sdk64
@@ -42,10 +40,10 @@ cp ~/steamworkssdk/linux64/steamclient.so ~/.steam/sdk64/
 ./steamcmd.sh +force_install_dir ~/palworldserver +@sSteamCmdForcePlatformType linux +login anonymous +app_update 2394010 validate +quit
 cd ~/palworldserver/
 ./PalServer.sh & pid=$!
-sleep 1m
+sleep 5m
 kill -TSTP $pid
 cp ~/palworldserver/DefaultPalWorldSettings.ini ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
-exit
+#exit might not need this
 EOF
 
 echo "[Unit]
@@ -65,7 +63,7 @@ Restart=always
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/palworld.service
 #sudo chmod 644 /etc/systemd/system/palworld.service
 sudo cd
-sudo systemctl daemon-reload
+#sudo systemctl daemon-reload
 sudo systemctl enable palworld
 sudo systemctl start palworld
 sleep 30
