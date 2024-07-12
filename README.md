@@ -19,7 +19,7 @@ Now that the install file is downloaded type the following.
 ###
     sudo chmod +x PalWorld-Install.sh
 ###
-    ./PalWorld-Install.sh
+    ./PalWorld-Install_v2.sh
 
 ### Below is the path for the server setting:
 
