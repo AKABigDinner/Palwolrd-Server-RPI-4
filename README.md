@@ -24,3 +24,14 @@ Now that the install file is downloaded type the following.
 ### Below is the path for the server setting:
 
     sudo nano ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+    
+#### Maunal Install
+
+###
+    sudo apt update
+###
+    sudo apt upgrade -y
+###
+    sudo apt install curl
+###
+    
