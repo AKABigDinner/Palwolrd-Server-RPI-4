@@ -29,7 +29,6 @@ Now that the install file is downloaded type the following.
 #### Maunal Install
 
 
-###
     sudo apt update
 ###
     sudo apt upgrade -y
