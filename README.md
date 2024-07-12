@@ -26,7 +26,7 @@ Now that the install file is downloaded type the following.
     sudo nano ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
     
     
-#### Maunal Install
+##### Manual Install
 
 
     sudo apt update
