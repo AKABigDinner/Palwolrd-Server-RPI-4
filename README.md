@@ -21,7 +21,7 @@ Now that the install file is downloaded type the following.
 ###
     ./PalWorld-Install_v2.sh
 
-### Below is the path for the server setting:
+## Below is the path for the server setting:
 
     sudo nano ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
     
