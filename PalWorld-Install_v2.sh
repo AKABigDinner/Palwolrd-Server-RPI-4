@@ -1,48 +1,53 @@
 #!/bin/bash
 set -x
-cd ~
-sudo apt update
-sudo apt install curl -y
-sudo apt update
-sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
+sudo apt install curl
+sudo apt update && sudo apt upgrade -y
 sudo apt install git build-essential cmake -y
-sudo git clone https://github.com/ptitSeb/box86
+git clone https://github.com/ptitSeb/box86
 sudo dpkg --add-architecture armhf
 sudo apt update
 sudo apt install gcc-arm-linux-gnueabihf libc6:armhf -y
 cd ~/box86
-sudo mkdir build
-cd ~/box86/build
-sudo cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make -j$(nproc)
+mkdir build && cd build
+cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
+make -j$(nproc)
 sudo make install
 sudo systemctl restart systemd-binfmt
-cd ~
-sudo git clone https://github.com/ptitSeb/box64.git
+sudo apt update && sudo apt upgrade -y
+sudo apt install git build-essential cmake -y
+sudo apt install git build-essential cmake
+git clone https://github.com/ptitSeb/box64.git
 cd ~/box64
-sudo mkdir build
-cd ~/box64/build
-sudo cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo			   
-sudo make -j$(nproc)
+mkdir build && cd build
+cmake .. -DRPI4ARM64=1 -DCMAKE_BUILD_TYPE=RelWithDebInfo
+make -j$(nproc)
 sudo make install
 sudo systemctl restart systemd-binfmt
 sudo useradd palworld -m
 cd ~
-sudo mkdir /home/palworld/steamcmd
-sudo cd /home/palworld/steamcmd
-cd /home/palworld/steamcmd && sudo curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
-sudo /home/palworld/steamcmd/./steamcmd.sh & pid=$!
+
+sudo -u palworld bash << EOF
+mkdir ~/steamcmd && cd ~/steamcmd
+sleep 5
+curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+
+./steamcmd.sh & pid=$!
 sleep 5m
 kill -TSTP $pid
-sudo /home/palworld/steamcmd./steamcmd.sh +force_install_dir /home/palworld/steamworkssdk +@sSteamCmdForcePlatformType linux +login anonymous +app_update 1007 validate +quit
-cd /home/palworld/ && sudo mkdir -p .steam/sdk64
-sudo cp /home/palworld/steamworkssdk/linux64/steamclient.so /home/palworld/.steam/sdk64/
-sudo /home/palworld/./steamcmd.sh +force_install_dir /home/palworld/palworldserver +@sSteamCmdForcePlatformType linux +login anonymous +app_update 2394010 validate +quit
-cd /home/palworld/palworldserver/
-sudo /home/palworld/palworldserver/./PalServer.sh & pid=$!
+
+./steamcmd.sh +force_install_dir ~/steamworkssdk +@sSteamCmdForcePlatformType linux +login anonymous +app_update 1007 validate +quit
+mkdir -p ~/.steam/sdk64 && cp ~/steamworkssdk/linux64/steamclient.so ~/.steam/sdk64/
+
+./steamcmd.sh +force_install_dir ~/palworldserver +@sSteamCmdForcePlatformType linux +login anonymous +app_update 2394010 validate +quit
+
+cd ~/palworldserver/
+./PalServer.sh & pid=$!
 sleep 5m
 kill -TSTP $pid
-sudo cp /home/palworld/palworldserver/DefaultPalWorldSettings.ini /home/palworld/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+
+cp ~/palworldserver/DefaultPalWorldSettings.ini ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
+sleep 5
 
 echo "[Unit]
 Description=Palworld Server
@@ -59,10 +64,8 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/system/palworld.service
-#sudo chmod 644 /etc/systemd/system/palworld.service
-sudo cd
-#sudo systemctl daemon-reload
+sleep 10
 sudo systemctl enable palworld
+sleep 10
 sudo systemctl start palworld
 sleep 30
-sudo reboot now -h
