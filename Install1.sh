@@ -26,4 +26,4 @@ sudo make install
 sudo systemctl restart systemd-binfmt
 sudo useradd palworld -m
 cd ~
-sudo mv /home/pi/install2.sh /home/palworld/
+sudo mv /home/pi/Palwolrd-Server-RPI-4/install2.sh /home/palworld/
