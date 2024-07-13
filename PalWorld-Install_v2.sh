@@ -45,7 +45,7 @@ cd ~/palworldserver/
 ./PalServer.sh & pid=$!
 sleep 5m
 kill -TSTP $pid
-
+sleep 5
 cp ~/palworldserver/DefaultPalWorldSettings.ini ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 sleep 5
 EOF
