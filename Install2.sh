@@ -6,9 +6,12 @@ curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.g
 ./steamcmd.sh & pid=$!
 sleep 5m
 kill -TSTP $pid
-./steamcmd.sh +force_install_dir ~/steamworkssdk +@sSteamCmdForcePlatformType linux +login anonymous +app_update 1007 validate +quit
+#./steamcmd.sh +force_install_dir ~/steamworkssdk +@sSteamCmdForcePlatformType linux +login anonymous +app_update 1007 validate +quit
+./steamcmd.sh +force_install_dir ~/steamworkssdk +@sSteamCmdForcePlatformType linux +@sSteamCmdForcePlatformBitness 64 +login anonymous +app_update 1007 validate +quit
 mkdir -p ~/.steam/sdk64 && cp ~/steamworkssdk/linux64/steamclient.so ~/.steam/sdk64/
-./steamcmd.sh +force_install_dir ~/palworldserver +@sSteamCmdForcePlatformType linux +login anonymous +app_update 2394010 validate +quit
+#./steamcmd.sh +force_install_dir ~/palworldserver +@sSteamCmdForcePlatformType linux +login anonymous +app_update 2394010 validate +quit
+./steamcmd.sh +force_install_dir ~/palworldserver +@sSteamCmdForcePlatformType linux +@sSteamCmdForcePlatformBitness 64 +login anonymous +app_update 2394010 validate +quit
+
 cd ~/palworldserver/
 ./PalServer.sh & pid=$!
 sleep 5m
