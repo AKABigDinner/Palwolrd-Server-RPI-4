@@ -48,6 +48,7 @@ kill -TSTP $pid
 
 cp ~/palworldserver/DefaultPalWorldSettings.ini ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 sleep 5
+EOF
 
 echo "[Unit]
 Description=Palworld Server
