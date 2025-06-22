@@ -49,7 +49,7 @@ Now that the install file is downloaded type the following.
 ###
     sudo apt update
 ###
-    sudo apt install gcc-arm-linux-gnueabihf libc6:armhf
+    sudo apt install gcc-arm-linux-gnueabihf libc6:armhf -Y
 ###
     cd ~/box86
 ###
