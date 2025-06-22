@@ -41,7 +41,7 @@ Now that the install file is downloaded type the following.
 ###
     sudo apt upgrade
 ###
-    sudo apt install git build-essential cmake
+    sudo apt install git build-essential cmake -Y
 ###
     git clone https://github.com/ptitSeb/box86
 ###
