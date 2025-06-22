@@ -144,5 +144,8 @@ Now that the install file is downloaded type the following.
     sudo systemctl enable palworld
 ###
     sudo systemctl start palworld
+## View live logs of the server 
+###
+    journalctl -u palworld.service -f
 
     
