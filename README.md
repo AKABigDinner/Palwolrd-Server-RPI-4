@@ -41,7 +41,7 @@ Now that the install file is downloaded type the following.
 ###
     sudo apt upgrade
 ###
-    sudo apt install git build-essential cmake -Y
+    sudo apt install git build-essential cmake -y
 ###
     git clone https://github.com/ptitSeb/box86
 ###
@@ -49,7 +49,7 @@ Now that the install file is downloaded type the following.
 ###
     sudo apt update
 ###
-    sudo apt install gcc-arm-linux-gnueabihf libc6:armhf -Y
+    sudo apt install gcc-arm-linux-gnueabihf libc6:armhf -y
 ###
     cd ~/box86
 ###
