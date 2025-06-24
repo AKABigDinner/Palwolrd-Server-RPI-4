@@ -17,11 +17,17 @@ Now that the install file is downloaded type the following.
 
     cd Palwolrd-Server-RPI-4
 ###
-    sudo chmod +x Install1.sh Install2.sh
+    sudo chmod +x install-palworld.sh
 ###
-    ./Install1.sh
+    ./install-palworld.sh
 ###
-    ./Install2.sh
+    sudo systemctl enable palworld
+###
+    sudo systemctl start palworld
+## View live logs of the server 
+###
+    journalctl -u palworld.service -f
+
 
 ## Below is the path for the server setting:
 
