@@ -31,10 +31,9 @@ STEAMCND along with the palworld server data.
     sudo systemctl enable palworld
 ### This will start the service for the server
     sudo systemctl start palworld
-## Any time you want to ssh in to the rpi you can run this to see the server logs.
-###
+### Any time you want to ssh in to the rpi you can run this to see the server logs.
     journalctl -u palworld.service -f
-
+##
 
 ## Below is the path for the server setting:
 
