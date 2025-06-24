@@ -18,13 +18,21 @@ Now that the install file is downloaded type the following.
     cd Palwolrd-Server-RPI-4
 ###
     sudo chmod +x install-palworld.sh
+    
 ###
+NOTE: When running this command you will need to run it 3 times.
+The first will load x86 box. Then it will automatically reboot.
+Next you will run it again for the second time. it will load x64 box.
+Then it will automatically reboot. Finally run it one more time to install 
+STEAMCND along with the palworld server data.
+
     ./install-palworld.sh
-###
+### This will set the auto startup for the service to be enabled.
+
     sudo systemctl enable palworld
-###
+### This will start the service for the server
     sudo systemctl start palworld
-## View live logs of the server 
+## Any time you want to ssh in to the rpi you can run this to see the server logs.
 ###
     journalctl -u palworld.service -f
 
