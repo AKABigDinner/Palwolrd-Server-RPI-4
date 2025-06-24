@@ -39,7 +39,7 @@ STEAMCND along with the palworld server data.
 
     sudo nano ~/palworldserver/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
     
-    
+##
 ## Manual Install
 
 
