@@ -10,7 +10,7 @@ In the CLI type the following.
 
     sudo apt install git -y
 ###
-    git clone https://github.com/AKABigDinner/Palwolrd-Server-RPI-4/install-palworld.sh.git
+    git clone https://github.com/AKABigDinner/Palwolrd-Server-RPI-4/install-palworld.sh
 
 Now that the install file is downloaded type the following.
 
